@@ -35,6 +35,10 @@ describe("tests for change-handler", function() {
         expect(vendor.isPaymentSufficient()).toBe(false);
     });
     it("32 change produces: quarters: 1, dimes: 0, nickels: 1, pennies: 2.", function() {
-        expect(vendor2.giveChange(){Return});
+        vendor2.insertCoin("quarter");
+        vendor2.insertCoin("quarter");
+        vendor2.insertCoin("quarter");
+        vendor2.insertCoin("quarter");
+        expect(vendor2.giveChange()).toEqual({quarters: 1, dimes: 0, nickels: 1, pennies: 2})
     });
 });

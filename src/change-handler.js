@@ -38,29 +38,35 @@ class ChangeHandler {
     }
 
     giveChange() {
-        let changeback = this.cashTendered - this.amountDue
-        // TODO return the correct change in the following format...
-        for (let i = 0; i < changeback; i++) {
-            if (i % 25 === 0) {
-                changeback - 25
-                quarters++
-            } else if (i % 10 === 0) {
-                changeback - 10
-                dimes++
-            } else if (i % 5 === 0) {
-                changeback - 5
-                nickels++
-            } else if (i % 1 === 0) {
-                changeback - 1
-                pennies++
+        let quarters = 0;
+        let dimes = 0;
+        let nickles = 0;
+        let pennies = 0;
+        let changeLeft = this.cashTendered - this.amountDue
+        while (changeLeft > 0)  {
+            if (changeLeft > 25)  {
+                changeLeft -= 25;
+                quarters++;
             }
+            else if (changeLeft > 10)  {
+                changeLeft -= 10;
+                dimes++;
+            }
+            else if (changeLeft > 5)  {
+                changeLeft -= 5;
+                nickles++;
+            }
+            else if (changeLeft > 1)  {}
+                changeLeft -= 1;
+                pennies++;
         }
-        return {
-            quarters: 0,
-            dimes: 0,
-            nickels: 0,
-            pennies: 0
+        return  {
+            quarters: quarters,
+            dimes: dimes,
+            nickels: nickles,
+            pennies: pennies
         }
+     
     }
 }
 var vendor = new ChangeHandler(100);
